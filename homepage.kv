@@ -1,0 +1,311 @@
+<TrendingIntakeCard@MDCard>:
+    size_hint: .9, None
+    height: dp(120)
+    radius: [16]
+    elevation: 0.5
+    padding: dp(10)
+    md_bg_color: 1, 1, 1, 1
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        spacing: dp(10)
+
+        MDIcon:
+            icon: 'school-outline'
+            size_hint: None, None
+            size: dp(50), dp(50)
+            theme_text_color: 'Custom'
+            text_color: 0, 0.5, 0.8, 1
+            pos_hint: {'center_y': .5}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(4)
+
+            MDLabel:
+                text: "DMI - St.John the Babtist"
+                font_name: 'fonts/Bpoppins.ttf'
+                font_size: sp(16)
+                bold: True
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "Undergraduate"
+                font_name: 'fonts/MPoppins.ttf'
+                font_size: sp(14)
+                theme_text_color: "Secondary"
+
+    MDRaisedButton:
+        text: "View Details"
+        pos_hint: {'right': 1}
+        size_hint: None, None
+        size: dp(110), dp(30)
+        md_bg_color: 0, 0.5, 0.8, 1
+        text_color: 1, 1, 1, 1
+        font_name: 'fonts/MPoppins.ttf'
+        font_size: sp(13)
+        
+<TrendingVacancyCard@MDCard>:
+    size_hint: .9, None
+    height: dp(120)
+    radius: [16]
+    elevation: 0.5
+    padding: dp(10)
+    md_bg_color: 1, 1, 1, 1
+    orientation: 'vertical'
+
+    MDBoxLayout:
+        orientation: 'horizontal'
+        spacing: dp(10)
+
+        MDIcon:
+            icon: 'briefcase-outline'
+            size_hint: None, None
+            size: dp(50), dp(50)
+            theme_text_color: 'Custom'
+            text_color: 0, 0.5, 0.8, 1
+            pos_hint: {'center_y': .5}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(4)
+
+            MDLabel:
+                text: "Software Engineer"
+                font_name: 'fonts/Bpoppins.ttf'
+                font_size: sp(16)
+                bold: True
+                theme_text_color: "Primary"
+
+            MDLabel:
+                text: "BlueTech Ltd - Blantyre"
+                font_name: 'fonts/MPoppins.ttf'
+                font_size: sp(14)
+                theme_text_color: "Secondary"
+
+    MDRaisedButton:
+        text: "View Details"
+        pos_hint: {'right': 1}
+        size_hint: None, None
+        size: dp(110), dp(30)
+        md_bg_color: 0, 0.5, 0.8, 1
+        text_color: 1, 1, 1, 1
+        font_name: 'fonts/MPoppins.ttf'
+        font_size: sp(13)
+        
+<Trending@MDCard>:
+	elevation: 0.01
+	radius: [5]
+	size_hint: .60,None
+	height: dp(90)
+	pos_hint: {'center_x':.5}
+	#adaptive_height: True
+	
+
+<CategoryCard>:
+	radius: [16]
+	md_bg_color: 1,1,1,1
+	
+	
+	
+<BadgeIconButton>:
+	size_hint: None,None
+	size: dp(70),dp(70)
+	radius: self.size[0]/2
+	shadow_radius: self.radius[0]
+	
+	MDIcon:
+		icon: root.icon
+		badge_icon: root.badge_icon
+		size: root.size
+		pos_hint: {'center_x':.5,'center_y':.5}
+		pos: root.pos
+		font_size: root.size[0]*.58
+		
+<ProfileButton>:
+	#md_bg_color: 'red'
+	size_hint: None,None
+	size: dp(60),dp(60)
+	radius: self.size[0]/2
+	shadow_radius: self.radius[0]
+	on_release: pass
+	
+	FitImage:
+		source: root.profile_img
+		size_hint: None,None
+		size: root.size
+		pos_hint: {'center_y':.5,'center_x':.5}
+		radius: self.size[0]/2
+		font_size: root.size[0]*.6
+		pos: root.pos
+		
+
+MDScreen:
+	name: 'homepage'
+	
+	MDBoxLayout:
+		spacing: dp(5)
+		md_bg_color: 1,0,0,0.01
+		
+		orientation: 'vertical'
+		
+		MDFloatLayout:
+			size_hint: 1,.12
+			#md_bg_color: 1,0,0,0.5
+			MDIconButton:
+				icon: 'menu'
+				user_font_size: sp(30)
+				icon_size: sp(30)
+				pos_hint: {'center_y':.5}
+			BadgeIconButton:
+				pos_hint: {'center_y':.50,'center_x':.7}
+			ProfileButton:
+				pos_hint: {'center_y':.5,'center_x':.9}
+				elevation: 1
+		SearchBar:
+			md_bg_color: 1,1,1,1
+			elevation: 1
+			size_hint: .89,.09
+			radius: [16]
+			pos_hint: {'center_x':.5}
+			
+			MDIconButton:
+				icon: 'magnify'
+				pos_hint: {'center_y':.5,'center_x':.09}
+			TextInput:
+				id: searchbox
+				hint_text: 'search intakes,vacancies....'
+				pos_hint: {'center_y':.5,'center_x':.54}
+				size_hint: .80,None
+				height: self.minimum_height
+				background_color: 1,1,1,0
+				padding: 15
+				multiline: False
+				cursor_width: sp(2)
+				cursor_color: 0.5,.5,.5,.1
+				hint_text_color: .5,.5,.5,.5
+				font_size: sp(16)
+				font_name: 'fonts/MPoppins.ttf'
+				
+		MDBoxLayout:
+			padding: 0,2,0,0
+			ScrollView:
+				do_scroll_x: False
+				do_scroll_y: True
+				
+				MDBoxLayout:
+					size_hint: 1,None
+					height: self.minimum_height
+					MDBoxLayout:
+						size_hint: 1,None
+						height: self.minimum_height
+						orientation: 'vertical'
+						padding: 0,18,0,0
+						spacing: 22
+						
+						MDLabel:
+							text: 'Categories'
+							font_name: 'fonts/Bpoppins.ttf'
+							font_size: sp(18)
+							bold: True
+							halign: 'center'
+						MDGridLayout:
+							rows: 1
+							#cols: 2
+							spacing: 10
+							padding: 10
+							size_hint: 1,None
+							height: self.minimum_height
+							height: 200
+							
+							CategoryCard:
+								MDIcon:
+									icon: 'briefcase-outline'
+									pos_hint: {'center_x':.5,'center_y':.60}
+								MDLabel:
+									text: 'Vacancies'
+									font_name: 'fonts/MPoppins.ttf'
+									bold: True
+									halign: 'center'
+									pos_hint: {'center_x':.5,'center_y':.40}
+									
+							CategoryCard:
+								MDIcon:
+									icon: 'school-outline'
+									pos_hint: {'center_x':.5,'center_y':.60}
+								MDLabel:
+									text: 'Intakes'
+									font_name: 'fonts/MPoppins.ttf'
+									bold: True
+									halign: 'center'
+									pos_hint: {'center_x':.5,'center_y':.40}
+	
+							CategoryCard:
+								MDIcon:
+									icon: 'newspaper'
+									pos_hint: {'center_x':.5,'center_y':.60}
+								MDLabel:
+									text: 'News'
+									font_name: 'fonts/MPoppins.ttf'
+									bold: True
+									halign: 'center'
+									pos_hint: {'center_x':.5,'center_y':.40}
+	
+							CategoryCard:
+								MDIcon:
+									icon: 'chat-outline'
+									pos_hint: {'center_x':.5,'center_y':.60}
+								MDLabel:
+									font_name: 'fonts/MPoppins.ttf'
+									text: 'Chat'
+									bold: True
+									halign: 'center'
+									pos_hint: {'center_x':.5,'center_y':.40}
+			
+						MDBoxLayout:
+							size_hint_y: None
+							height: self.minimum_height
+							spacing: dp(15)
+							padding: 10
+							orientation: 'vertical'
+							MDLabel:
+								text: 'Trending Job Vacancies'
+								halign: 'center'
+								font_size: sp(18)
+								font_name: 'fonts/Bpoppins.ttf'
+							MDGridLayout:
+								size_hint_y: None
+								height: self.minimum_height
+								cols: 1
+								spacing: 10
+								padding: 0,15,0,0
+								
+								TrendingVacancyCard
+								TrendingVacancyCard
+								TrendingVacancyCard
+								TrendingVacancyCard
+
+						MDBoxLayout:
+							size_hint: 1,None
+							height: self.minimum_height
+							spacing: dp(15)
+							padding: 10
+							orientation: 'vertical'
+							MDLabel:
+								text: 'Trending school Intakes'
+								halign: 'center'
+								font_size: sp(18)
+								font_name: 'fonts/Bpoppins.ttf'
+							MDGridLayout:
+								size_hint_y: None
+								height: self.minimum_height
+								cols: 1
+								spacing: 10
+								padding: 0,15,0,0
+								
+								TrendingIntakeCard
+								TrendingIntakeCard
+								TrendingIntakeCard
+								TrendingIntakeCard								
+			#BottomBar:		
